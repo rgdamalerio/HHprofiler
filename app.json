@@ -1,0 +1,12 @@
+{
+  "name": "HHprofiler",
+  "displayName": "HHprofiler",
+  "expo": {
+    "name": "HHprofiler",
+    "slug": "HHprofiler",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
