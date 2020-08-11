@@ -5,8 +5,8 @@
     "name": "HHprofiler",
     "slug": "HHprofiler",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "platforms": ["ios", "android", "web"],
+    "orientation": "portrait",
+    "assetBundlePatterns": ["**/*"]
   }
 }

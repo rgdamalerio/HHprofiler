@@ -12,6 +12,7 @@ import {
 const validationSchema = Yup.object().shape({
   fname: Yup.string().required().label("First Name"),
   lname: Yup.string().required().label("Last Name"),
+  contact: Yup.string().required().label("Contact No"),
   prov: Yup.string().required().label("Province"),
   mun: Yup.string().required().label("Municipality"),
   brgy: Yup.string().required().label("Barangay"),
@@ -28,6 +29,7 @@ function RegisterScreen() {
             fname: "",
             lname: "",
             mname: "",
+            contact: "",
             prov: "",
             mun: "",
             brgy: "",
@@ -54,6 +56,12 @@ function RegisterScreen() {
             icon="account"
             name="mname"
             placeholder="Middle Name"
+          />
+          <FormField
+            autoCorrect={false}
+            icon="phone"
+            name="contact"
+            placeholder="Contact No:"
           />
           <FormField
             autoCorrect={false}
