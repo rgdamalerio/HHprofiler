@@ -40,6 +40,7 @@ function RespondentScreen() {
         placeholder="Search Here"
         lightTheme
         onChangeText={(text) => {
+          setSearch(text);
           const newData = messages.filter((item) => {
             const itemData = `${item.title.toUpperCase()}   
             ${item.title.toUpperCase()} ${item.description.toUpperCase()}`;
