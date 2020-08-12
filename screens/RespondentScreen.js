@@ -9,7 +9,7 @@ import {
   ListItemSeparator,
 } from "../components/lists";
 
-const initialMessages = [
+const initialRespondents = [
   {
     id: 1,
     title: "Jeremy Bacquial",
@@ -24,8 +24,10 @@ const initialMessages = [
   },
 ];
 
+const originalRespondents = initialRespondents;
+
 function RespondentScreen() {
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState(initialRespondents);
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -48,7 +50,7 @@ function RespondentScreen() {
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
           });
-          setMessages(newData);
+          setMessages(text === "" ? originalRespondents : newData);
         }}
         autoCorrect={false}
         value={search}
