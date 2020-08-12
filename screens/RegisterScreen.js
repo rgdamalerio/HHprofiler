@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, Modal } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
@@ -9,10 +9,11 @@ import {
   SubmitButton,
 } from "../components/forms";
 
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const validationSchema = Yup.object().shape({
   fname: Yup.string().required().label("First Name"),
   lname: Yup.string().required().label("Last Name"),
-  contact: Yup.string().required().label("Contact No"),
+  phoneNumber: Yup.string().matches(phoneRegExp, "Phone number is not valid"),
   prov: Yup.string().required().label("Province"),
   mun: Yup.string().required().label("Municipality"),
   brgy: Yup.string().required().label("Barangay"),
@@ -29,7 +30,7 @@ function RegisterScreen() {
             fname: "",
             lname: "",
             mname: "",
-            contact: "",
+            phoneNumber: "",
             prov: "",
             mun: "",
             brgy: "",
@@ -60,26 +61,31 @@ function RegisterScreen() {
           <FormField
             autoCorrect={false}
             icon="phone"
-            name="contact"
-            placeholder="Contact No:"
+            name="phoneNumber"
+            placeholder="Phone number"
+            width={320}
+            keyboardType="number-pad"
           />
           <FormField
             autoCorrect={false}
             icon="earth"
             name="prov"
             placeholder="Province"
+            chevron="chevron-down"
           />
           <FormField
             autoCorrect={false}
             icon="earth"
             name="mun"
             placeholder="Municipality"
+            chevron="chevron-down"
           />
           <FormField
             autoCorrect={false}
             icon="earth"
             name="brgy"
             placeholder="Barangay"
+            chevron="chevron-down"
           />
           <FormField
             autoCapitalize="none"
@@ -102,6 +108,7 @@ function RegisterScreen() {
           <SubmitButton title="Register" />
         </Form>
       </ScrollView>
+      <Modal visible={modalVisible} animationType="slide"></Modal>
     </Screen>
   );
 }
